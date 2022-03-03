@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void closeNotification() {
-        BigDecimal bigDecimal = new BigDecimal(result);
-        bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
-        txt.setText(String.valueOf(bigDecimal));
     }
 
     public void operator(View view){
@@ -65,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     public  void equ (View view){
         num2 = Double.parseDouble(txt.getText().toString());
+
         if(ope){
             if(sign=="+"){
                 result = num1 + num2;
@@ -84,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
+            BigDecimal bigDecimal = new BigDecimal(result);
+            bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
         }
     }
     
