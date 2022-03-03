@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         txt = findViewById(R.id.textView);
         ConstraintLayout root =findViewById(R.id.root);
-        Snackbar.make(root, "All numbers will be decimals", Snackbar.LENGTH_INDEFINITE).setAction(android.R.string.ok,view->closeNotification()).show();
+        Snackbar.make(root, "All results will be decimals", Snackbar.LENGTH_INDEFINITE).setAction(android.R.string.ok,view->closeNotification()).show();
 
     }
 
@@ -66,24 +66,31 @@ public class MainActivity extends AppCompatActivity {
         if(ope){
             if(sign=="+"){
                 result = num1 + num2;
-                txt.setText(String.valueOf(result));
+                BigDecimal bigDecimal = new BigDecimal(result);
+                bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
+                txt.setText(String.valueOf(bigDecimal));
             }else if(sign=="-"){
                 result = num1 - num2;
-                txt.setText(String.valueOf(result));
+                BigDecimal bigDecimal = new BigDecimal(result);
+                bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
+                txt.setText(String.valueOf(bigDecimal));
             }else if(sign=="*"){
                 result = num1 * num2;
-                txt.setText(String.valueOf(result));
+                BigDecimal bigDecimal = new BigDecimal(result);
+                bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
+                txt.setText(String.valueOf(bigDecimal));
             }else if(sign=="/"){
                 if(num2 == 0){
                     txt.setText("Cannot divide by zero");
                 }else{
                     result = num1 / num2;
-                    txt.setText(String.valueOf(result));
+                    BigDecimal bigDecimal = new BigDecimal(result);
+                    bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
+                    txt.setText(String.valueOf(bigDecimal));
                 }
 
             }
-            BigDecimal bigDecimal = new BigDecimal(result);
-            bigDecimal = bigDecimal.setScale(2, BigDecimal.	ROUND_HALF_DOWN);
+
         }
     }
     
